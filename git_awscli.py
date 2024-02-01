@@ -4,14 +4,14 @@ def install_packages():
     subprocess.run(['sudo', 'apt-get', 'install', 'git', 'awscli'])
 
 def clone_git_repo():
-    git_repo_url = input("enter Git repository url: ")
+    git_repo_url = input("enter git repository url: ")
     subprocess.run(['git', 'clone', git_repo_url])
     print("web application code cloned successfully")
 
 def configure_aws_cli():
     aws_access_key = input("enter AWS access key: ")
     aws_secret_key = input("enter AWS secret key: ")
-    aws_region = input("enter AWS region (e.g., us-west-2): ")
+    aws_region = input("enter AWS region (us-east-1 for example): ")
     output_format = input("enter desired output format (json for example): ").lower()
 
     subprocess.run(['aws', 'configure', 'set', 'aws_access_key_id', aws_access_key])
@@ -34,7 +34,7 @@ def configure_firewall():
         subprocess.run(['sudo', 'ufw', 'allow', '22'])  #for git ssh
         subprocess.run(['sudo', 'ufw', 'allow', '443'])
         subprocess.run(['sudo', 'ufw', 'enable'])
-        print("Firewall configured and enabled.")
+        print("firewall configured and enabled")
     else:
         print("firewall not configured")
 
